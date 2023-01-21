@@ -1,5 +1,6 @@
-#BackEnd Proyecto Notas
-##Stack: NodeJs, ExpressJS, MongoDB, JWT
+# BackEnd Proyecto Notas
+
+## Stack: NodeJs, ExpressJS, MongoDB, JWT
 
 - Este es el backend del proyecto, creado con un pequeno stack, donde la base de datos contiene una coleccion de User y Notas las cuales esta relacionadas cada usuario tendra una array de la notas, la cual se crearan y se agregaran al user por id, en la cual podemos buscar las notas relacionadas al usuario y los usuarios con las notas, tenemos varios endpoint para los request tanto para crear usuarios(/api/register) y loguearse(/api/login) cada vez que el usuario se loguea recibira un token con el cual podra hacer los request a la rutas correspondientes sin el token el usuario no tiene permiso para la request que solicita, como crear las notas(POST:/api/notes), Actualizar las notas (PUT:/api/notes/:id), borrar las notas (DELETE:/api/note/:id), obtener una nota por id (GET:/api/note/:id), obtener los usuarios (GET:/api/users).
 
