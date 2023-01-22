@@ -28,8 +28,6 @@ export const createNote = async (req, res, next) => {
 
   const user = await User.findById(userId)
 
-  console.log(user)
-
   if (!content) return res.status(404).json({ error: "required 'content' field is missing" })
   const newNote = new Note({
     content,
@@ -64,8 +62,10 @@ export const updatedNote = (req, res, next) => {
 
 export const deleteNote = async (req, res, next) => {
   const { id } = req.params
+  const { userId } = res
   try {
     await Note.findByIdAndDelete(id)
+    await User.updateOne({ _id: userId }, { $pull: { notes: id } })
     res.status(204).end()
   } catch (error) {
     next(error)
