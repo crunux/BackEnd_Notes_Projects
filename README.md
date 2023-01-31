@@ -21,7 +21,7 @@
 - [PUT] - /api/note/:id - Actualiza una nota por id pasado por parametros
 - [DELETE] - /api/note/:id - Elimina una nota por id pasada por parametros
 
-### User
+#### User
 - [POST] - /api/register - Crea un usuario enviando un cuerpo json con { "name":"", "username": "", "password": "" } todos requeridos.
 - [POST] - /api/login - es para loguearte y validar el usuario, envia un cuerpo json con username y password anteriomente reguistrada y retorna un token con el cual hacer los request a las rutas.
 >"Cada Request tiene que enviar el token recibido del login en el header para validar que es un usuario registado y cual usuario esta haciendo el request"
