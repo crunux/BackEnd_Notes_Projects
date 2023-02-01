@@ -9,14 +9,17 @@ services:
             - "27017:27017"
         volumes:
             - ./database/db:/data/db
-        # logging:
-        #   driver: none
+        logging:
+            driver: none
 
     backendNote:
         container_name: noteBackend
         image: note_backend:1.0
         restart: always
         env_file: .env
+        environment:
+            PORT: 3000
+            MONGO_URI: mongodb://mongo/Note
         ports:
             - "3000:3000"
         links:
