@@ -2,12 +2,26 @@
 import { model, Schema } from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
 const userSchema = new Schema({
-  name: String,
+  name: {
+    type: String,
+    required: true
+  },
+  lastname: {
+    type: String,
+    reuired: true
+  },
   username: {
     type: String,
     unique: true
   },
-  passwordHash: String,
+  email: {
+    type: String,
+    required: true
+  },
+  passwordHash: {
+    type: String,
+    required: true
+  },
   notes: [{
     type: Schema.Types.ObjectId,
     ref: 'Note'

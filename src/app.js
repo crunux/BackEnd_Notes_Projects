@@ -8,6 +8,9 @@ import { connectDB } from './db/db.config.js'
 import { routeNotFound } from './middleware/routeNotFound.js'
 import { handleErrors } from './middleware/handleErrors.js'
 
+import swaggerUiExpress from 'swagger-ui-express'
+import swaggerSpecs from './middleware/swaggerDocs.js'
+
 const app = express()
 
 connectDB()
@@ -16,6 +19,7 @@ app.use(morgan('tiny'))
 app.use(cors())
 
 app.use(express.json())
+app.use('/api/docs', swaggerUiExpress.serve, swaggerUiExpress.setup(swaggerSpecs))
 app.use('/api', userRoutes)
 app.use('/api', noteRoutes)
 

@@ -38,12 +38,12 @@ export const userDelete = async (req, res, next) => {
 }
 
 export const userRegister = async (req, res) => {
-  const { name, username, password } = req.body
+  const { name, lastname, username, password, email } = req.body
   const saltRound = 12
   try {
     const passwordHash = bcrypt.hashSync(password, saltRound)
     const newUser = new User({
-      name, username, passwordHash
+      name, lastname, username, email, passwordHash
     })
     const userSave = await newUser.save()
     res.status(200).json({ userSave })
