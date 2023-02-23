@@ -28,7 +28,6 @@ export const createNote = async (req, res, next) => {
 
   const user = await User.findById(userId)
 
-  if (!content) return res.status(404).json({ error: "required 'content' field is missing" })
   const newNote = new Note({
     content,
     important,
