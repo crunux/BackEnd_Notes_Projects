@@ -5,11 +5,11 @@ import { registerValidator, loginValidator } from '../validators/user.validator.
 
 const router = Router()
 
-router.post('/login', loginValidator, userLogin)
+router.post('/auth/login', loginValidator, userLogin)
 
 router.get('/users', validateToken, usersGet)
 
-router.post('/register', registerValidator, userRegister)
+router.post('/auth/register', registerValidator, userRegister)
 
 router.delete('/user', validateToken, userDelete)
 

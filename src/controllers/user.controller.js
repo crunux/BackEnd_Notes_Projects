@@ -57,8 +57,8 @@ export const userById = async (req, res) => {
   const user = await User.findById(userId).populate('notes', {
     content: 1,
     date: 1,
+    important: 1,
     _id: 0
   })
-
   res.status(200).json(user)
 }
