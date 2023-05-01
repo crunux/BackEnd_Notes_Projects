@@ -58,7 +58,7 @@ export const userById = async (req, res) => {
     content: 1,
     date: 1,
     important: 1,
-    _id: 0
+    _id: 1
   })
   res.status(200).json(user)
 }

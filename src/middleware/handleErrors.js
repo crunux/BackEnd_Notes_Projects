@@ -8,7 +8,7 @@ const ERROR_HANDLERS = {
   TokenExpiredError: (res, error) =>
     res.status(401).json({ message: error.message, ExpireAt: new Date(error.expiredAt) }),
   defaultError: res =>
-    res.status(500).end()
+    res.status(500).end({ error: error})
 }
 
 export const handleErrors = (error, req, res, next) => {

@@ -9,7 +9,8 @@ export const getNotes = async (req, res, next) => {
     name: 1,
     username: 1
   })
-  res.json(notes)
+  if (note) return res.json(notes)
+  res.status(404).json({ error: 'notes not found' })
 }
 
 export const getNoteById = async (req, res) => {
@@ -45,18 +46,19 @@ export const createNote = async (req, res, next) => {
   }
 }
 
-export const updatedNote = (req, res, next) => {
+export const updatedNote = async (req, res, next) => {
   const { id } = req.params
   const note = req.body
   const newNoteInfo = {
     content: note.content,
     important: note.important
   }
-
-  Note.findByIdAndUpdate(id, newNoteInfo, { new: true })
-    .then(result => {
-      res.status(200).json(result)
-    }).catch(error => next(error))
+  try{
+    const newNote = await Note.findByIdAndUpdate(id, newNoteInfo, { new: true })
+    res.status(200).json(newNote)
+  } catch {
+    next(error)
+  }
 }
 
 export const deleteNote = async (req, res, next) => {
