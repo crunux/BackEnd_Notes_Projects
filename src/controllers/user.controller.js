@@ -10,10 +10,9 @@ export const userLogin = async (req, res) => {
   const userAllow = user === null
     ? false
     : bcrypt.compareSync(password, user.passwordHash)
-
-  if (!(user && userAllow)) {
-    res.status(404).json({ error: 'username or password invalid' })
-  }
+  
+  if (!(user && userAllow)) return res.status(404).json({ error: 'username or password invalid' })
+  
   const acessToken = jwt.sign(user.toObject(), SECRET_KEY, { expiresIn: 86400 })
   res.status(202).json({ token: acessToken })
 }
