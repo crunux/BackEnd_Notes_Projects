@@ -67,7 +67,7 @@ export const deleteNote = async (req, res, next) => {
   try {
     await Note.findByIdAndDelete(id)
     await User.updateOne({ _id: userId }, { $pull: { notes: id } })
-    res.status(204).end()
+    res.status(204).json({ message: 'note eliminated'})
   } catch (error) {
     next(error)
   }

@@ -42,7 +42,7 @@ export const userRegister = async (req, res) => {
   try {
     const passwordHash = bcrypt.hashSync(password, saltRound)
     const newUser = new User({
-      name, lastname,username, passwordHash, email
+      name, lastname, username, passwordHash, email
     })
     const userSave = await newUser.save()
     res.status(200).json({ userSave })
